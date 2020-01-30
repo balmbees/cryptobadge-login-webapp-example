@@ -1,0 +1,25 @@
+{
+  "name": "cryptobadge-login-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf built",
+    "build": "tsc && browserify -e built/app.js -o built/app.bundle.js",
+    "serve": "static -p 8080 .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MooYeol Prescott Lee <mooyoul@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "query-string": "^6.10.1",
+    "sha.js": "^2.4.11"
+  },
+  "devDependencies": {
+    "@types/sha.js": "2.4.0",
+    "browserify": "^16.5.0",
+    "node-static": "0.7.11",
+    "typescript": "3.7.5"
+  }
+}

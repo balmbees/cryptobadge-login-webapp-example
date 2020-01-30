@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moim Webapp Authentication Callback</title>
+</head>
+<body>
+<script type="text/javascript">
+ready(() => {
+  if (window.opener) {
+    // @todo Handle authentication failure. `error`, `error_description` query param will be set
+    //  if authentication was failed
+    const query = new URLSearchParams(location.search);
+    const message = JSON.stringify({ code: query.get("code"), state: query.get("state") });
+
+    window.opener.postMessage(message);
+  } else {
+    // Fallback for direct access, or authentication failure
+    location.replace("/");
+  }
+});
+
+function ready(fn) {
+  if (document.readyState != 'loading'){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+</script>
+</body>
+</html>
